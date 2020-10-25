@@ -1,15 +1,31 @@
-//write includes statements
-
-//write using statements for cin and cout
-
-
-/*
-Use a do while loop to prompt the user for 
-a number, call the factorial function, and display the number's
-factorial.  Also, loop continues as long as user wants to.
-*/
+#include <iostream>
+#include "loops.h"
+using std::cout;
+using std::cin;
+using std::endl;
 int main() 
 {
+  int i = 1;
+  do {
+    
+    int x = 0;
+    
+    while (true) {
+      cout << "Please enter a number that is between 1 and 20: ";
+      cin >>x;
+      if (x >= 1 && x <=20) {
+        break;
+      }
+
+    }
+    cout <<"Your factorial is: "<<factorial(x)<<endl;
+    
+    
+
+    
+    cout <<"If you would like to continue please enter any number other than 0: ";
+    cin >> i;
+  }while (i != 0);
 
 	return 0;
 }
