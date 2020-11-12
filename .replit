@@ -1,5 +1,5 @@
 language = "cpp"
-run="export CC=clang; export CXX=clang++;  mkdir -p ../build; cd ../build; cmake ../acc-cosc-1337-fall-2020-basiliskk/; make; cd src/homework/04_iteration; ./hw_04_exe"
+run="export CC=clang; export CXX=clang++;  mkdir -p ../build; cd ../build; cmake ../acc-cosc-1337-fall-2020-basiliskk/; make; cd src/homework/tic_tac_toe; ./hw_tic_tac_toe_exe "
 
 #test/homework_test/04_iteration; ./hw_04_tests -s"
 #src/homework/04_iteration; ./hw_04_exe"
