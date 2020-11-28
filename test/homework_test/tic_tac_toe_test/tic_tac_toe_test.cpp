@@ -56,7 +56,7 @@ TEST_CASE("Testing Tic Tac Toe Game if tie is possible") {
    
 }
 
-TEST_CASE("Test win by first column - X wins")
+TEST_CASE("Test win by first column")
 {
 	TicTacToe board;
 	board.start_game("X");
@@ -71,6 +71,7 @@ TEST_CASE("Test win by first column - X wins")
 	REQUIRE(board.game_over() == false);
 	board.mark_board(7);
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 }
 
 TEST_CASE("Test win by second column")
@@ -89,6 +90,7 @@ TEST_CASE("Test win by second column")
 	board.mark_board(8);
 	 
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 }
 
 TEST_CASE("Test win by third column")
@@ -107,6 +109,7 @@ TEST_CASE("Test win by third column")
 	board.mark_board(9);
 
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 }
 
 TEST_CASE("Test win by first row")
@@ -125,6 +128,7 @@ TEST_CASE("Test win by first row")
 	board.mark_board(3); 
 	
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 }
 
 TEST_CASE("Test win by second row")
@@ -143,6 +147,7 @@ TEST_CASE("Test win by second row")
 	board.mark_board(6); 
 	
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 }
 
 TEST_CASE("Test win by third row")
@@ -161,6 +166,7 @@ TEST_CASE("Test win by third row")
 	board.mark_board(9); 
 	
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 }
 
 TEST_CASE("Test win diagonal 1")
@@ -179,6 +185,7 @@ TEST_CASE("Test win diagonal 1")
 	board.mark_board(9); 
 	
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 }
 
 TEST_CASE("Test win diagonal 2")
@@ -197,6 +204,7 @@ TEST_CASE("Test win diagonal 2")
 	board.mark_board(7); 
 	
 	REQUIRE(board.game_over() == true);
+  REQUIRE(board.get_winner() ==  "X");
 } 
 
 

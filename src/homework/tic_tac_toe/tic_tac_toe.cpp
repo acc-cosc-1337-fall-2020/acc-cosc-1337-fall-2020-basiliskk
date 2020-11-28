@@ -1,5 +1,4 @@
 #include "tic_tac_toe.h"
-#include <iostream> 
 
 bool TicTacToe:: check_board_full()  {
   
@@ -33,13 +32,6 @@ void TicTacToe::start_game(std::string first_player)
   void TicTacToe::mark_board(int position) {
     pegs[position -1 ] = player;
     set_next_player();
-  }
-
- 
-  void TicTacToe::display_board() const {
-    for (int i =0; i < 9; i+= 3) {
-      std::cout<<pegs[i]<<"|"<<pegs[i+1]<<"|"<<pegs[i+2]<<std::endl;
-    }
   }
 
 
@@ -109,4 +101,36 @@ bool TicTacToe::check_column_win()
 	  }
 
 	return false;
+}
+
+
+std::ostream& operator<<(std::ostream& out, const TicTacToe& game)
+{
+  out<<"winner: "<<game.get_winner()<<std::endl;
+
+  for(int i = 0; i < game.pegs.size(); i += 3) 
+  {
+    out<<game.pegs[i]<<"|"<<game.pegs[i+1]<<"|"<<game.pegs[i+2]<<"\n";
+  }
+  out<<"\n";
+  return out;
+}
+//overloading the output operator in order to display the number of winners and the current state of the game
+
+std::istream& operator>>(std::istream& in, TicTacToe& game) {
+  int p;
+  std::cout<<"Please enter a position from 1 to 9: ";
+  in>>p;
+
+  //exact same input verification as HW_6, 
+  while(!in.good() && (p <1 || p >9)) {
+    in.clear();
+
+    std::cout<<"Please enter a position from 1 to 9: ";
+    in>>p;
+  }
+
+  game.mark_board(p);
+
+  return in;
 }
