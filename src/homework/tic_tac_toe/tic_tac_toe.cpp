@@ -1,6 +1,6 @@
 #include "tic_tac_toe.h"
 
-bool TicTacToe:: check_board_full()  {
+bool TicTacToe:: check_board_full() const  {
   
   for (auto peg: pegs) 
   {
@@ -64,42 +64,16 @@ void TicTacToe::start_game(std::string first_player)
 
 bool TicTacToe::check_column_win()
 {
-    for (int i = 0; i < 3; i++) 
-	{
-		if (pegs[i] == pegs[i + 3] && pegs[i + 3] == pegs[i + 6]
-			&& pegs[i + 6] != " ")
-		{
-			return true;
-		}
-	}
-
 	return false;
 }
 
   bool TicTacToe::check_row_win()
 {
-    for (int i = 0; i < 9; i += 3) 
-	{
-		if(pegs[i] == pegs[i+1] && pegs [i+1] == pegs[i+2] && pegs[i] != " ")
-		{
-			return true;
-		}
-	}
-
 	return false;
 }
 
  bool TicTacToe::check_diagonal_win()
 {
-    if(pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[0] != " ")
-    {
-      return true;
-    }
-    else if(pegs[2] == pegs[4] && pegs[4] == pegs[6] && pegs[2] != " ")
-    {
-		  return true;
-	  }
-
 	return false;
 }
 
@@ -108,25 +82,31 @@ std::ostream& operator<<(std::ostream& out, const TicTacToe& game)
 {
   out<<"winner: "<<game.get_winner()<<std::endl;
 
-  for(int i = 0; i < game.pegs.size(); i += 3) 
-  {
-    out<<game.pegs[i]<<"|"<<game.pegs[i+1]<<"|"<<game.pegs[i+2]<<"\n";
+  for(int i = 0; i < game.pegs.size(); i+= game.dimensionality) {
+    out << game.pegs[i] << "|" << game.pegs[i + 1] << "|" << game.pegs[i + 2];			
+
+		if (game.dimensionality == 4)
+		{
+			out << "|" << game.pegs[i + 3];
+		}
+    out<<"\n";
+
   }
   out<<"\n";
   return out;
 }
-//overloading the output operator in order to display the number of winners and the current state of the game
+
 
 std::istream& operator>>(std::istream& in, TicTacToe& game) {
   int p;
-  std::cout<<"Please enter a position from 1 to 9: ";
+  std::cout<<"Please enter a position from 1 to "<<game.pegs.size()<<": ";
   in>>p;
 
   //exact same input verification as HW_6, 
-  while(!in.good() && (p <1 || p >9)) {
+  while(!in.good() && (p <1 || p >game.pegs.size())) {
     in.clear();
 
-    std::cout<<"Please enter a position from 1 to 9: ";
+    std::cout<<"Please enter a position from 1 to "<<game.pegs.size()<<": ";
     in>>p;
   }
 
