@@ -9,7 +9,7 @@ using std::endl;
 int main() 
 {
   TicTacToeData data;
-  TicTacToeManager(data&); 
+  TicTacToeManager manager(data); 
   std::unique_ptr<TicTacToe> game;
   std::string player;
   int dimension;

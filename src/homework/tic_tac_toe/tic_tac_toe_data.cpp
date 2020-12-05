@@ -35,11 +35,11 @@
         board = std::make_unique<TicTacToe4>(pegs, thisWinner);
       }
 
-      boards.push_back(board);
-      in_file.close();
+      boards.push_back(std::move(board));
+      
 
       }
-      
+      in_file.close();
       return boards;
 
 }
