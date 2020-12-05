@@ -1,1 +1,5 @@
 //temperature.h
+
+class Temperature {
+  
+}
